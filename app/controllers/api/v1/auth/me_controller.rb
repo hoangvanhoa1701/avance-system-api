@@ -1,9 +1,9 @@
 class Api::V1::Auth::MeController < ApplicationController
   include Secured
-  
+
   # GET /me
   def show
-      render json: @user
+    render json: @user
   end
 
   # private

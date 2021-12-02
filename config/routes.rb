@@ -7,6 +7,10 @@ Rails.application.routes.draw do
         get '/me', to: "me#show"
       end
 
+      resources :users, only: [:create, :index, :show, :update]
+      # get '/users', to: "users#index"
+      # get '/users/', to: "users#show"
+
       get '/private/hello', to: "private#hello"
       get '/public/hello', to: "public#hello"
     end
