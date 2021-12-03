@@ -1,0 +1,1044 @@
+{
+	"info": {
+		"_postman_id": "3934a209-9f25-41c2-84fb-9d32bb7f1f47",
+		"name": "avance-system-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "default",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"if(response.success) {",
+									"    console.log(response)",
+									"    pm.environment.set(\"accountID\", response.data[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/default",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"default"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/default/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"default",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title\",\n    \"email\": \"email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/default",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"default"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title\",\n    \"email\": \"email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/default/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"default",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/default/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"default",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "program",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"if(response.success) {",
+									"    console.log(response)",
+									"    pm.environment.set(\"accountID\", response.data[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/programs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"programs"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/programs/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"programs",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title\",\n    \"email\": \"email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/programs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"programs"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title\",\n    \"email\": \"email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/programs/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"programs",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/programs/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"programs",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();",
+									"if(response.success) {",
+									"    console.log(response)",
+									"    pm.environment.set(\"accountID\", response.data[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Tenant",
+								"value": "{{tenantName}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"5"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"hoangvanhoa7@gmail.com\",\n    \"fullname\": \"Hoang Van Hoa 5\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullname\": \"Hoang Van Hoa 222222222\",\n    \"password\": \"password1\",\n    \"password_confirmation\": \"password1\",\n    \"role\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"5"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/default/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"default",
+								"1"
+							]
+						},
+						"description": "http://127.0.0.1:3000/api/v1/companies/Internal/user"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"hoangvanhoa8@gmail.com\",\r\n    \"fullname\": \"Hoang Van Hoa\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/v1/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();",
+							"if(response.success) {",
+							"    console.log(response)",
+							"    pm.environment.set(\"account_access_token\", response.data.access_token);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"hoangvanhoa1@gmail.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/auth/authenticate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"authenticate"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/v1/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Me",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImM4Zkw2M3A0NzBmbjgzZWdvRkEzSCJ9.eyJpc3MiOiJodHRwczovL2Rldi1hdmFuY2Utc3lzdGVtLWFwaS51cy5hdXRoMC5jb20vIiwic3ViIjoidzFiTFpjZTJiaGRXSjMzVG5nVTEzY1ltRElqcmhMeW9AY2xpZW50cyIsImF1ZCI6Imh0dHA6Ly8xMjcuMC4wLjE6MzAwMCIsImlhdCI6MTYzODQ0Mjg1NSwiZXhwIjoxNjM4NTI5MjU1LCJhenAiOiJ3MWJMWmNlMmJoZFdKMzNUbmdVMTNjWW1ESWpyaEx5byIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.R7JGcCFVpjDfEX-3tzBL5O65YYnY5W5u_lHtfE8smpd1yPxYfILy-0eb-cd0uchK5UkwYLo5wdADItfZuqHJ-pOnf3UsW9xmE0wgGmURDzRYdxd66VEGAAbOh8oY6zbFiBmA1OswqwZGvAjzip7YpQysPaYgIAPUkwmtVmAU16CJjANGIUHvxNIYoCYqbBxk83A_HV8koHV-ojoY0R07uoiIzoZ01cKGe6CwopCLIZ3_u5cEdW5lSeSv1aT59Fxh2jqq4HX3N_tMDJ_g7rPe92O4MPcrMI3fn7kshMhFMz7UE_3mIrZz0l4VErvtR2S_iSwUqTBEr90TYtcX5AijFQ",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/auth/me",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"me"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/v1/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "private/hello",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImM4Zkw2M3A0NzBmbjgzZWdvRkEzSCJ9.eyJpc3MiOiJodHRwczovL2Rldi1hdmFuY2Utc3lzdGVtLWFwaS51cy5hdXRoMC5jb20vIiwic3ViIjoidzFiTFpjZTJiaGRXSjMzVG5nVTEzY1ltRElqcmhMeW9AY2xpZW50cyIsImF1ZCI6Imh0dHA6Ly8xMjcuMC4wLjE6MzAwMCIsImlhdCI6MTYzODQzOTYwNCwiZXhwIjoxNjM4NTI2MDA0LCJhenAiOiJ3MWJMWmNlMmJoZFdKMzNUbmdVMTNjWW1ESWpyaEx5byIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.cJ-Kj3qGpxj4FowcezXmikfk35lQmV3qMZKAL4xLz0Cl6ZP8PGQVrlHBlAWBCQWDUcCB0e1fTLeGhCLse40cq6j39bwls9yM1r3yxdTijKrp1ZIxlWbe9xgsWwdGXt1YvQDjUzp9PjAN-EdqGl9l2NM9mcRqlpRsrECmGiYoAsQQPGY_XENbQzwCZriXRyZMZ1tfxoiys3Ra4s6eLbIxIQlHUbnQEw6oxr7hEov5xh3pUjQ-fO_NBXTxjI-dkeXpWkG6wjUhovkeUtyz14VimELGzRwo-FPrPT0VNBRLPZbgDlelzehIlr2BujJbuK5UaX878xLLdk5RGHu6R982Gg",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/private/hello",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"private",
+						"hello"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/v1/user/login"
+			},
+			"response": []
+		}
+	]
+}
