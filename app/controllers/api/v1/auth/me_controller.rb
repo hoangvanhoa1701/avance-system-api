@@ -1,9 +1,10 @@
 class Api::V1::Auth::MeController < ApplicationController
-  include Secured
+  # include Secured
+  before_action :authenticate
 
   # GET /me
   def show
-    render json: @user
+    render json: @current_user
   end
 
   # private
