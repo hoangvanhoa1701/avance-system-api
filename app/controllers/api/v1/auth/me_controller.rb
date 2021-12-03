@@ -4,7 +4,7 @@ class Api::V1::Auth::MeController < ApplicationController
 
   # GET /me
   def show
-    render json: @current_user
+    render json: { user: @current_user, status: 201 }
   end
 
   # private

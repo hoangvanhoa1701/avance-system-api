@@ -3,14 +3,13 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
   before_action :load_user, only: :create
 
   def create
-    @current_user = User.find_by email: params[:email]
     if @current_user.present? && @current_user.authenticate(params[:password])
       render json: { user: @current_user,
                      token: generate_token(params['remember']),
                      message: 'Login successfully!',
                      status: 200 }
     else
-      render json: { message: 'Invalid email or password!' }
+      render json: { message: 'Incorrect username or password!', status: 400 }
     end
   end
 
@@ -21,7 +20,7 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
   private
 
   def load_user
-    # @current_user = User.find_by email: params[:email]
+    @current_user = User.find_by email: params[:email]
   end
 
   # login_token = SecureRandom.hex
@@ -30,7 +29,8 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
   def generate_token(remember)
     payload = {
       user_id: @current_user.id,
-      email: @current_user.email
+      email: @current_user.email,
+      role: @current_user.role
     }
     (payload[:exp] = Time.now.to_i + 60) unless remember
     secret = Rails.application.secrets.secret_key_base
