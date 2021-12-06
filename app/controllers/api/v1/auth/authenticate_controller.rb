@@ -1,5 +1,5 @@
 class Api::V1::Auth::AuthenticateController < ApplicationController
-  # skip_before_action :authenticate, only: :create
+  before_action :authenticate, only: :destroy
   before_action :load_user, only: :create
 
   def create
@@ -14,6 +14,8 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
   end
 
   def destroy
+    # @current_user = User.find_by(refresh_token: params[:refresh_token])
+    @current_user.update(refresh_token: nil)
     render json: { message: 'Logout successfully!', status: 200 }
   end
 

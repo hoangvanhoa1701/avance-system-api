@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       namespace 'auth' do
         post '/register', to: "register#create"
         post '/authenticate', to: "authenticate#create"
+        delete '/logout', to: "authenticate#destroy"
         get '/me', to: "me#show"
         post '/refresh-token', to: "refresh_token#create"
       end
