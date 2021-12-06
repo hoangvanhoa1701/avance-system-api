@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         post '/register', to: "register#create"
         post '/authenticate', to: "authenticate#create"
         get '/me', to: "me#show"
+        post '/refresh-token', to: "refresh_token#create"
       end
 
       resources :users, only: [:create, :index, :show, :update]

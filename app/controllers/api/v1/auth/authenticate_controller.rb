@@ -24,20 +24,30 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
   end
 
   # login_token = SecureRandom.hex
-  # exp = Time.now.to_i + 24 * 60 * 60
 
   def generate_token(remember)
-    payload = {
+    secret_key = Rails.application.secrets.secret_key_base
+
+    payload_token = {
       user_id: @current_user.id,
       email: @current_user.email,
-      role: @current_user.role
+      role: @current_user.role,
+      exp: Time.now.to_i + 60
     }
-    (payload[:exp] = Time.now.to_i + 60) unless remember
-    secret = Rails.application.secrets.secret_key_base
-    access_token = JWT.encode(payload, secret)
+    access_token = JWT.encode(payload_token, secret_key)
+
+    payload_refresh_refresh = {
+      user_id: @current_user.id,
+      exp: Time.now.to_i + 24 * 60 * 60
+    }
+    (payload_refresh_refresh[:exp] = Time.now.to_i + 30 * 24 * 60 * 60) if remember
+    refresh_token = JWT.encode(payload_refresh_refresh, secret_key)
+
+    @current_user.update(refresh_token: refresh_token)
 
     @auth_token = {
       access_token: access_token,
+      refresh_token: refresh_token,
       token_type: 'Bearer'
     }
   end
