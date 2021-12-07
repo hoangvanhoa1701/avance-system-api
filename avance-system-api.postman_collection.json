@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3934a209-9f25-41c2-84fb-9d32bb7f1f47",
+		"_postman_id": "4529b5b7-501e-4da6-b929-ebf55a45a90a",
 		"name": "avance-system-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -556,14 +556,7 @@
 							]
 						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "X-Tenant",
-								"value": "{{tenantName}}",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -868,12 +861,13 @@
 					{
 						"key": "authorization",
 						"value": "Bearer {{token}}",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"hoangvanhoa1@gmail.com\",\n    \"password\": \"password\"\n}",
+					"raw": "{\n    \"email\": \"hoangvanhoa2@gmail.com\",\n    \"password\": \"password\"\n    // \"remember\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -932,9 +926,10 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "authorization",
-						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImM4Zkw2M3A0NzBmbjgzZWdvRkEzSCJ9.eyJpc3MiOiJodHRwczovL2Rldi1hdmFuY2Utc3lzdGVtLWFwaS51cy5hdXRoMC5jb20vIiwic3ViIjoidzFiTFpjZTJiaGRXSjMzVG5nVTEzY1ltRElqcmhMeW9AY2xpZW50cyIsImF1ZCI6Imh0dHA6Ly8xMjcuMC4wLjE6MzAwMCIsImlhdCI6MTYzODQ0Mjg1NSwiZXhwIjoxNjM4NTI5MjU1LCJhenAiOiJ3MWJMWmNlMmJoZFdKMzNUbmdVMTNjWW1ESWpyaEx5byIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.R7JGcCFVpjDfEX-3tzBL5O65YYnY5W5u_lHtfE8smpd1yPxYfILy-0eb-cd0uchK5UkwYLo5wdADItfZuqHJ-pOnf3UsW9xmE0wgGmURDzRYdxd66VEGAAbOh8oY6zbFiBmA1OswqwZGvAjzip7YpQysPaYgIAPUkwmtVmAU16CJjANGIUHvxNIYoCYqbBxk83A_HV8koHV-ojoY0R07uoiIzoZ01cKGe6CwopCLIZ3_u5cEdW5lSeSv1aT59Fxh2jqq4HX3N_tMDJ_g7rPe92O4MPcrMI3fn7kshMhFMz7UE_3mIrZz0l4VErvtR2S_iSwUqTBEr90TYtcX5AijFQ",
-						"type": "text"
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImhvYW5ndmFuaG9hMkBnbWFpbC5jb20iLCJleHAiOjE2Mzg1MjY4ODJ9.TVuDf5_uRsJksyGtrMv9QZgCclUuj-EU0Z5aN5Vf-o8",
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "User-Agent",
@@ -1034,6 +1029,118 @@
 						"v1",
 						"private",
 						"hello"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/v1/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{refresh_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE2Mzg4Nzc1NTF9.J5xMlOtE4Z43KEdEfZGk6EYHxW2bHL8cjxB-MU-dq9A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/auth/refresh-token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"refresh-token"
+					]
+				},
+				"description": "http://127.0.0.1:3000/api/v1/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/auth/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout"
 					]
 				},
 				"description": "http://127.0.0.1:3000/api/v1/user/login"
