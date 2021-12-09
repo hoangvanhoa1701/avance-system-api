@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       # get '/users/', to: "users#show"
 
       get '/private/hello', to: "private#hello"
+      get '/private-scoped', to: "private#private_scoped"
       get '/public/hello', to: "public#hello"
     end
   end
