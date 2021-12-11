@@ -4,9 +4,10 @@ class Api::V1::Auth::RegisterController < ApplicationController
     @user[:role] = 3
 
     if @user.save
-      render json: @user, status: :created, message: "Sign up successfully!"
+      render json: { data: @user, status: 201, message: "Sign up successfully!" }
     else
-      render json: @user.errors, status: :unprocessable_entity, message: "Sign up failed!"
+      response.status = 422
+      render json: @user.errors, status: 422, message: "Sign up failed!"
     end
   end
 

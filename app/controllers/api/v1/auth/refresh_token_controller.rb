@@ -3,8 +3,9 @@ class Api::V1::Auth::RefreshTokenController < ApplicationController
   def create
     @current_user = User.find_by(refresh_token: params[:refresh_token])
 
-    render json: { access_token: generate_token, message: "Refresh token successfully!" }
+    render json: { data: { access_token: generate_token }, status: 201, message: "Refresh token successfully!" }
   rescue StandardError
+    response.status = 422
     render json: { message: 'Refresh token failed!' }
   end
 

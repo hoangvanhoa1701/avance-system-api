@@ -4,19 +4,20 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
 
   def create
     if @current_user.present? && @current_user.authenticate(params[:password])
-      render json: { user: @current_user,
-                     token: generate_token(params['remember']),
-                     message: 'Login successfully!',
-                     status: 200 }
+      render json: { data: { user: @current_user, token: generate_token(params['remember']) },
+                     status: 200, message: 'Login successfully!' }
     else
-      render json: { message: 'Incorrect username or password!', status: 400 }
+      # TODO: Handle error
+      response.status = 422
+      render json: { status: 422, message: 'Incorrect username or password!' }
     end
+
   end
 
   def destroy
     # @current_user = User.find_by(refresh_token: params[:refresh_token])
     @current_user.update(refresh_token: nil)
-    render json: { message: 'Logout successfully!', status: 200 }
+    render json: { status: 200, message: 'Logout successfully!' }
   end
 
   private
