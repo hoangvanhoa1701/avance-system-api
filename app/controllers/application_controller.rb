@@ -12,6 +12,7 @@ class ApplicationController < ActionController::API
   rescue StandardError
   # rescue JWT::ImmatureSignature
     # Handle expired token, e.g. logout user or deny access
+    response.status = 401
     render json: { message: 'Unauthorized!', status: 401 }
   end
 end
