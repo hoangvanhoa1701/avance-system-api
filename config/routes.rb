@@ -13,6 +13,12 @@ Rails.application.routes.draw do
       # get '/users', to: "users#index"
       # get '/users/', to: "users#show"
 
+      get '/programs', to: "programs#index"
+      post '/programs', to: "programs#create"
+      get '/programs/:id', to: "programs#show"
+      put '/programs/:id', to: "programs#update"
+      delete '/programs/:id', to: "programs#destroy"
+
       get '/private/hello', to: "private#hello"
       get '/private-scoped', to: "private#private_scoped"
       get '/public/hello', to: "public#hello"

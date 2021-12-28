@@ -8,8 +8,8 @@ class Api::V1::Auth::AuthenticateController < ApplicationController
                      status: 200, message: 'Login successfully!' }
     else
       # TODO: Handle error
-      response.status = 422
-      render json: { status: 422, message: 'Incorrect username or password!' }
+      render json: { status: 422, message: 'Incorrect username or password!' },
+             status: 422
     end
 
   end
