@@ -3,4 +3,6 @@ class Session < ApplicationRecord
   has_many :categories
   has_many :lessons
   has_many :units
+
+  accepts_nested_attributes_for :categories
 end

@@ -10,12 +10,12 @@ class Api::V1::ProgramsController < ApplicationController
                   Program.all.where(created_by: @current_user.id)
                 end
 
-    render json: @programs
+    render json: @programs, status: 200
   end
 
   # GET /programs/1
   def show
-    render json: @program
+    render json: @program, status: 200
   end
 
   # POST /programs
@@ -41,6 +41,7 @@ class Api::V1::ProgramsController < ApplicationController
   # PATCH/PUT /programs/1
   def update
     if @program.update(program_params)
+      update_sessions
       render json: @program
     else
       render json: @program.errors, status: 422
@@ -64,14 +65,38 @@ class Api::V1::ProgramsController < ApplicationController
     params.require(:program).permit(:title, :sessions)
   end
 
+  def session_params(session)
+    session.permit(:title, :categories)
+  end
+
+  def category_params(category)
+    category.permit(:title)
+  end
+
   def create_sessions
     params[:sessions].each do |session|
-      @program.sessions.create(session_params(session))
+      session_current = @program.sessions.create(session_params(session))
+      create_categories(session_current, session) if session[:categories]
     end
   end
 
-  def session_params(session)
-    session.permit(:title)
+  def update_sessions
+    params[:sessions].each do |session|
+      session_current = @program.sessions.find(session[:id]).update(session_params(session))
+      # update_categories(session_current, session) if session[:categories]
+    end
   end
+
+  def create_categories(session_current, session)
+    session[:categories].each do |category|
+      @category = session_current.categories.create(category_params(category))
+    end
+  end
+
+  # def update_categories(session_current, session)
+  #   session[:categories].each do |category|
+  #     @category = session_current.categories.create(category_params(category))
+  #   end
+  # end
 end
 
