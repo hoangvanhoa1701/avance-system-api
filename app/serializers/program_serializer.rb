@@ -6,9 +6,10 @@ class ProgramSerializer < ActiveModel::Serializer
       {
         id: session.id,
         title: session.title,
+        categories: session.categories
       }
     end
   end
 
-  has_many :sessions, include: :all
+  # has_many :sessions, include: :all
 end

@@ -30,7 +30,7 @@ class Api::V1::ProgramsController < ApplicationController
     end
 
     if @program.save
-      create_sessions
+      update_sessions
 
       render json: @program, status: 201, message: 'Created program successfully!'
     else
@@ -66,37 +66,33 @@ class Api::V1::ProgramsController < ApplicationController
   end
 
   def session_params(session)
-    session.permit(:title, :categories)
+    session.permit(:id, :title, categories_attributes: %i[id title])
   end
 
   def category_params(category)
     category.permit(:title)
   end
 
-  def create_sessions
-    params[:sessions].each do |session|
-      session_current = @program.sessions.create(session_params(session))
-      create_categories(session_current, session) if session[:categories]
-    end
-  end
-
   def update_sessions
     params[:sessions].each do |session|
-      session_current = @program.sessions.find(session[:id]).update(session_params(session))
-      # update_categories(session_current, session) if session[:categories]
+      if session[:id]
+        session_current = @program.sessions.find(session[:id])
+        session_current.update(session_params(session))
+      else
+        session_current = @program.sessions.create(session_params(session))
+      end
+      update_categories(session_current, session) if session[:categories]
     end
   end
 
-  def create_categories(session_current, session)
+  def update_categories(session_current, session)
     session[:categories].each do |category|
-      @category = session_current.categories.create(category_params(category))
+      if category[:id]
+        session_current.categories.find(category[:id]).update(category_params(category))
+      else
+        session_current.categories.create(category_params(category))
+      end
     end
   end
-
-  # def update_categories(session_current, session)
-  #   session[:categories].each do |category|
-  #     @category = session_current.categories.create(category_params(category))
-  #   end
-  # end
 end
 
