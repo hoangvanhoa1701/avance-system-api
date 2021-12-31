@@ -62,11 +62,11 @@ class Api::V1::ProgramsController < ApplicationController
   end
 
   def program_params
-    params.require(:program).permit(:title, :sessions)
+    params.require(:program).permit(:title, sessions_attributes: %i[id title _destroy])
   end
 
   def session_params(session)
-    session.permit(:id, :title, categories_attributes: %i[id title])
+    session.permit(:id, :title, categories_attributes: %i[id title _destroy])
   end
 
   def category_params(category)

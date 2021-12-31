@@ -9,6 +9,4 @@ class SessionSerializer < ActiveModel::Serializer
       }
     end
   end
-
-  # has_many :categories, include: :all
 end
