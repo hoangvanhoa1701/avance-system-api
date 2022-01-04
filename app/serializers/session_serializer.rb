@@ -1,5 +1,5 @@
 class SessionSerializer < ActiveModel::Serializer
-  attributes :id, :title, :categories
+  attributes :id, :title, :categories, :created_at, :updated_at
 
   def categories
     object.categories.map do |category|

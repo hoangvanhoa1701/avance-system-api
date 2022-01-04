@@ -1,5 +1,5 @@
 class ProgramSerializer < ActiveModel::Serializer
-  attributes :id, :title, :sessions
+  attributes :id, :title, :sessions, :created_at, :updated_at
 
   # change key from title to :name_test
   # attribute :title, key: :name_test

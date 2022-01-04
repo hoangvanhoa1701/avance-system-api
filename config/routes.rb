@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       delete '/programs/:id', to: "programs#destroy"
 
       resources :sessions, only: [:index, :create, :show, :update, :destroy]
+      resources :categories, only: [:index, :create, :show, :update, :destroy]
 
       get '/private/hello', to: "private#hello"
       get '/private-scoped', to: "private#private_scoped"
