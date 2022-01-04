@@ -1,6 +1,6 @@
 class Api::V1::ProgramsController < ApplicationController
   before_action :authenticate
-  before_action :set_user, only: %i[show update destroy]
+  before_action :set_program, only: %i[show update destroy]
 
   # GET /programs
   def index
@@ -55,7 +55,7 @@ class Api::V1::ProgramsController < ApplicationController
 
   private
 
-  def set_user
+  def set_program
     @program = Program.find(params[:id])
 
     render json: { message: 'Do not have permission!' }, status: 403 if @program.created_by != @current_user.id
