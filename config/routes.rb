@@ -9,18 +9,20 @@ Rails.application.routes.draw do
         post '/refresh-token', to: "refresh_token#create"
       end
 
-      resources :users, only: [:create, :index, :show, :update]
-      # get '/users', to: "users#index"
-      # get '/users/', to: "users#show"
+      # resources :roles, only: %i[index create show update]
+      get '/roles/all', to: "roles#index"
+      get '/roles/admin', to: "roles#index_admin"
+      get '/roles/contentadmin', to: "roles#index_contentadmin"
+      get '/roles/educator', to: "roles#index_educator"
+      get '/roles/usernone', to: "roles#index_usernone"
 
-      get '/programs', to: "programs#index"
-      post '/programs', to: "programs#create"
-      get '/programs/:id', to: "programs#show"
-      put '/programs/:id', to: "programs#update"
-      delete '/programs/:id', to: "programs#destroy"
+      put '/roles', to: "roles#update"
+      delete '/roles/:id', to: "roles#destroy"
 
-      resources :sessions, only: [:index, :create, :show, :update, :destroy]
-      resources :categories, only: [:index, :create, :show, :update, :destroy]
+      resources :users, only: %i[index create show update]
+      resources :programs, only: %i[index create show update destroy]
+      resources :sessions, only: %i[index create show update destroy]
+      resources :categories, only: %i[index create show update destroy]
 
       get '/private/hello', to: "private#hello"
       get '/private-scoped', to: "private#private_scoped"
