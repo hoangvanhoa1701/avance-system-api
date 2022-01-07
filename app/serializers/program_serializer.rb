@@ -9,6 +9,7 @@ class ProgramSerializer < ActiveModel::Serializer
       {
         id: session.id,
         title: session.title,
+        _destroy: session._destroy,
         categories: categories(session.categories)
       }
     end

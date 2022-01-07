@@ -52,9 +52,9 @@ class Api::V1::RolesController < ApplicationController
 
     if params[:educator] && params[:program_ids]
       params[:educator].each do |email|
-        user = User.find_by(email: email).update(role: :educator)
-
-        update_program(user)
+        user = User.find_by(email: email)
+        user.update(role: :educator)
+        user.update(program_ids: params[:program_ids])
       end
     end
 
@@ -72,16 +72,5 @@ class Api::V1::RolesController < ApplicationController
 
   def role_admin
     render json: { message: 'Forbidden!' }, status: 403 if @current_user.role != 'admin'
-  end
-
-  # def update_admin
-  # # User.find_by(email: email).update(role: :educator)
-  # end
-
-  def update_user_program(user)
-    params[:program_ids].each do |id|
-      # TODO: update program_ids
-      # user.programs
-    end
   end
 end
