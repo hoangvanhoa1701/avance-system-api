@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2021_12_28_043602) do
     t.string "link"
     t.string "file"
     t.datetime "deleted_at"
-    t.bigint "session_id", null: false
-    t.bigint "category_id", null: false
-    t.bigint "unit_id", null: false
+    t.bigint "session_id"
+    t.bigint "category_id"
+    t.bigint "unit_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_lessons_on_category_id"

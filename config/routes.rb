@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       resources :programs, only: %i[index create show update destroy]
       resources :sessions, only: %i[index create show update destroy]
       resources :categories, only: %i[index create show update destroy]
+      resources :lessons, only: %i[index create show update destroy]
+      resources :units, only: %i[index create show update destroy]
 
       get '/private/hello', to: "private#hello"
       get '/private-scoped', to: "private#private_scoped"

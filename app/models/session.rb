@@ -1,8 +1,8 @@
 class Session < ApplicationRecord
   belongs_to :program
   has_many :categories, dependent: :destroy
-  has_many :lessons
-  has_many :units
+  has_many :lessons, dependent: :destroy
+  has_many :units, dependent: :destroy
 
   accepts_nested_attributes_for :categories, allow_destroy: true
 
